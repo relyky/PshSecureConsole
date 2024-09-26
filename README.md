@@ -1,0 +1,2 @@
+# PshSecureConsole
+ Secure String + PowerShell
