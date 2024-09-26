@@ -16,9 +16,6 @@ internal class DecryptCommand(SecureStringService _sstrSvc)
       cypherText = await reader.ReadToEndAsync();
     }
 
-    // Remove all new-lines
-    cypherText = cypherText.Replace(Environment.NewLine, "");
-
     // 解密 SecureString。
     string plainText = _sstrSvc.Decrypt(cypherText);
 

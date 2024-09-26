@@ -14,6 +14,9 @@ internal class SecureStringService
 {
   public string Decrypt(string encryptedText)
   {
+    // Remove all new-lines
+    encryptedText = encryptedText.Replace(Environment.NewLine, "");
+
     // 解開 Protected SecureString
     string decryptedText = DoUpprotectText(encryptedText);
     return decryptedText;
