@@ -2,6 +2,10 @@
  SecureString with PowerShell   
  使用 PowerShell 加解密機敏文字，用 C# 程式碼解開。
 
+# 引言
+使用 PowerShell 在本機進行加解密。過程中使用 SecureString 結構存儲存與交換；其基底是 ProtectedData 類別。SecureString 是用本機的秘密金鑰加解密，故換主機後會無效。   
+注意事項：加解密的編解碼是用 Unicode (UTF-16) 故中文字無效。另外 ProtectedData 類別只能在 windows 環境執行。
+
 # PowerShell 加解密機敏文字指令
 加密
 ```powershell
