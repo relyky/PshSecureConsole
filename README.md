@@ -1,4 +1,4 @@
-# PshSecureConsole
+# 用 PowerShell 加密用 C# 解密
  SecureString with PowerShell   
  使用 PowerShell 加解密機敏文字，用 C# 程式碼解開。   
 
