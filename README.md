@@ -30,12 +30,40 @@ $decryptedText
 
 # 沒圖沒真象
 工具加解密測試。   
+```bash
+echo abc;XYZ;12345.6789 | PshSecureConsole encrypt | PshSecureConsole decrypt
+abc;XYZ;12345.6789
+```
 ![工具加解密測試](/_doc/encrypt_decrypt_test.png)
 
-PowerShell加密；工具解密。   
+PowerShell加密；工具解密。  
+```powershell
+# 用 Powershell 加密
+$plainText = 'Your DataBase ConnString; 12345.6789'
+$secureString = ConvertTo-SecureString -String $plainText -AsPlainText -Force
+$encryptedString = ConvertFrom-SecureString -SecureString $secureString
+$encryptedString
+
+# 用本工具解密
+$decryptedText = echo $encryptedString | ./PshSecureConsole decrypt
+$decryptedText
+```
 ![PowerShell加密；工具解密](/_doc/psh_encrypt_decrypt.png)
 
 工具加密；PowerShell工具解密。   
+```powershell
+# 用本工具加密
+$plainText = 'ABC;def; 1234.56789'
+$encryptedString = echo $plainText | ./PshSecureConsole encrypt
+
+# 用 Powershell 解開
+$decryptedString = ConvertTo-SecureString -String $encryptedString
+$Marshal = [System.Runtime.InteropServices.Marshal]
+$Bstr = $Marshal::SecureStringToBSTR($decryptedString)
+$decryptedText = $Marshal::PtrToStringAuto($Bstr)
+$Marshal::ZeroFreeBSTR($Bstr)
+$decryptedText
+```
 ![工具加密；PowerShell工具解密](/_doc/encrypt_psh_descrypt.png)
  
 # 參考文章
