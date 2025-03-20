@@ -1,6 +1,7 @@
 # 用 PowerShell 加密用 C# 解密
  SecureString with PowerShell   
- 使用 PowerShell 加解密機敏文字，用 C# 程式碼解開。   
+ 使用 PowerShell 加解密機敏文字，用 C# 程式碼解開。
+ ※注意：SecureString 加密的 key 是依據當時所在的 host 與 account。也就是換了機器或換了帳號就不會通。
 
 # 引言
 使用 PowerShell 在本機進行加解密。過程中使用 SecureString 結構存儲存與交換；其基底是 ProtectedData 類別。SecureString 是用本機的秘密金鑰加解密，故換主機後會無效。   
